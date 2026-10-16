@@ -1,4 +1,4 @@
-# K2PollutionFilter (K2 Pollution Processing)
+# K2PollutionFilter (K2 Air Purification)
 
 [简体中文](README.md)
 
@@ -98,3 +98,7 @@ minute). Qualities added by other mods are pinned the same way; `quality-unknown
 
 Translations of the spore chain, the settings and the subgroup name currently exist in English
 and Simplified Chinese only — contributions for the other 21 languages are very welcome.
+
+The mod name itself is localised into all 23 shipped languages through the official `[mod-name]`
+category (see `locale/*/k2pf-meta.cfg`): "K2 Air Purification" in English, "K2空气净化" in Chinese.
+The `title` in `info.json` is the fallback used when a language has no entry.

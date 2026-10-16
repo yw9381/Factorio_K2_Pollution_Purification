@@ -1,7 +1,7 @@
 {
   "name": "K2PollutionFilter",
   "version": "0.1.0",
-  "title": "K2 Pollution Processing",
+  "title": "K2 Air Purification",
   "author": "L1n3",
   "description": "从 Krastorio 2 中单独抽取出来的污染处理体系：空气净化器、污染过滤器与过滤器回收。支持 Space Age 的孢子处理，并适配 Quality（减污量固定、不随品质变化）。装载 Krastorio 2 本体时本 mod 会自动让位。",
   "factorio_version": "2.1",
