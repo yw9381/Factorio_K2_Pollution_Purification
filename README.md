@@ -55,21 +55,23 @@ atmosphere (`pressure >= 1`) — space platforms cannot craft them.
 **Quality.** The engine does not scale negative emissions by quality, so every quality level
 above normal gets its own hidden copy of the purifier entity:
 
-| Quality | Level | Multiplier | Pollution / spore absorption per minute | Absorbed per filter (600 s) |
-| --- | --- | --- | --- | --- |
-| Normal | 0 | 1× | −50 | 500 |
-| Uncommon | 1 | 3× | −150 | 1,500 |
-| Rare | 2 | 5× | −250 | 2,500 |
-| Epic | 3 | 7× | −350 | 3,500 |
-| Legendary | 5 | 10× | −500 | 5,000 |
+| Quality | Level | Multiplier | Pollution / spore absorption per minute | Absorbed per filter (600 s) | Health |
+| --- | --- | --- | --- | --- | --- |
+| Normal | 0 | 1× | −50 | 500 | 200 |
+| Uncommon | 1 | 3× | −150 | 1,500 | 260 |
+| Rare | 2 | 5× | −250 | 2,500 | 320 |
+| Epic | 3 | 7× | −350 | 3,500 | 380 |
+| Legendary | 5 | 10× | −500 | 5,000 | 500 |
 
 The multiplier is this mod's own curve — legendary is deliberately one step above the 9× an
 arithmetic progression would give. The global `k2pf-pollution-strength` setting still multiplies
-on top of it. Crafting speed is deliberately pinned to 1 by `crafting_speed_quality_multiplier` —
-the engine would otherwise also speed the machine up and scale the absorption a second time.
-Other vanilla quality effects (health, energy usage, module slots) are left untouched, so those
-values are identical at every quality. Qualities added by other mods are picked up automatically
-and extrapolated as `1 + 2 × level`; `quality-unknown` is skipped.
+on top of it. Crafting speed is deliberately pinned to 1 by `crafting_speed_quality_multiplier`,
+so a filter always lasts one full 600 s cycle: the engine would otherwise also speed the machine
+up (the only quality bonus a furnace gets besides health) and burn filters faster at the same
+absorption rate. Health follows the engine default (`+30%` per level, so 200 / 260 / 320 / 380 /
+500), while energy usage and module slots do not change — quality adds no pollution bonus of its
+own on top of this mod's copies. Qualities added by other mods are picked up automatically and
+extrapolated as `1 + 2 × level`; `quality-unknown` is skipped.
 
 ### Known trade-offs
 
@@ -146,19 +148,21 @@ and Simplified Chinese only — contributions for the other 21 languages are ver
 
 **Quality。** 引擎不会按品质缩放负排放，因此 normal 之上的每个品质都有一份隐藏的净化器实体：
 
-| 品质 | 等级 | 倍率 | 每分钟减污 / 吸孢子 | 单过滤器吸污（600 s） |
-| --- | --- | --- | --- | --- |
-| 普通 | 0 | 1× | −50 | 500 |
-| 罕见 | 1 | 3× | −150 | 1 500 |
-| 稀有 | 2 | 5× | −250 | 2 500 |
-| 史诗 | 3 | 7× | −350 | 3 500 |
-| 传奇 | 5 | 10× | −500 | 5 000 |
+| 品质 | 等级 | 倍率 | 每分钟减污 / 吸孢子 | 单过滤器吸污（600 s） | 血量 |
+| --- | --- | --- | --- | --- | --- |
+| 普通 | 0 | 1× | −50 | 500 | 200 |
+| 罕见 | 1 | 3× | −150 | 1 500 | 260 |
+| 稀有 | 2 | 5× | −250 | 2 500 | 320 |
+| 史诗 | 3 | 7× | −350 | 3 500 | 380 |
+| 传奇 | 5 | 10× | −500 | 5 000 | 500 |
 
 倍率是本 mod 自定的曲线，传奇刻意比等差数列的 9× 高一档。全局设置
 `k2pf-pollution-strength` 仍乘在品质倍率之上。制作速度用 `crafting_speed_quality_multiplier`
-刻意钉在 1：否则引擎会连带提速，把吸污量再放大一次。其它常规品质收益（血量、能耗、插件槽）
-保持引擎默认，因此各品质下这些数值完全相同。其它 mod 注入的品质会自动覆盖，并按
-`1 + 2 × 等级` 外推；`quality-unknown` 跳过。
+刻意钉在 1，让一个过滤器始终跑满 600 s 一个周期：引擎否则会连带提速（除血量以外，这是熔炉类
+建筑唯一的品质收益），在减污速率不变的情况下加快过滤器消耗。血量沿用引擎默认（每级 +30%，
+即 200 / 260 / 320 / 380 / 500），能耗与插件槽不变；除本 mod 自己复制的这些实体外，品质本身
+不提供任何减污加成。其它 mod 注入的品质会自动覆盖，并按 `1 + 2 × 等级` 外推；`quality-unknown`
+跳过。
 
 ### 已知取舍
 

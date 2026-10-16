@@ -22,8 +22,10 @@ for name, quality in pairs(data.raw["quality"]) do
     copy.crafting_speed = 1
     -- 引擎默认会按品质给制作机器提速（crafting_speed_quality_multiplier 回落到
     -- QualityPrototype.crafting_machine_speed_multiplier = 1 + 0.3 × level）。
-    -- 这里把速度钉死在 1，让"减污"成为唯一的品质收益；否则实际吸污量会变成 (1+0.3L)²。
-    -- 减污倍率本身由 guard.quality_modifier 给出（1/3/5/7/10）。
+    -- 这里把速度钉死在 1：污染/减污速率只跟能耗挂钩，与制作速度无关，所以提速不会让
+    -- "每分钟减污量"变大，只会让 600 s 的净化配方变短（传奇 240 s 一个过滤器），
+    -- 白白多烧过滤器。钉死速度后每种品质都是 1 个过滤器 / 600 s，
+    -- 单过滤器吸污量正好等于减污倍率（见 guard.quality_modifier：1/3/5/7/10）。
     copy.crafting_speed_quality_multiplier = { [name] = 1 }
     copy.placeable_by = { item = BASE_NAME, count = 1, quality = name }
 
