@@ -11,7 +11,7 @@ data:extend({
     type = "technology",
     name = "kr-spore-purification",
     icons = {
-      { icon = "__K2PollutionFilter__/graphics/icons/technologies/air-purifier.png", icon_size = 256 },
+      { icon = "__K2PollutionPurification__/graphics/icons/technologies/air-purifier.png", icon_size = 256 },
       { icon = "__space-age__/graphics/icons/gleba.png", icon_size = 64, scale = 0.5, shift = { -32, -32 } },
     },
     order = "a-e-e",

@@ -2,7 +2,7 @@ data:extend({
   {
     type = "technology",
     name = "kr-air-purification",
-    icon = "__K2PollutionFilter__/graphics/icons/technologies/air-purifier.png",
+    icon = "__K2PollutionPurification__/graphics/icons/technologies/air-purifier.png",
     icon_size = 256,
     order = "a-e-d",
     -- K2 原本的前置是 kr-advanced-chemistry 与 kr-bio-processing（K2 专属科技），

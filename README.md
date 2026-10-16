@@ -1,4 +1,4 @@
-# K2PollutionFilter（K2污染净化）
+# K2PollutionPurification（K2污染净化）
 
 [English](README_EN.md)
 
@@ -12,7 +12,7 @@
 ## 安装
 
 * 在 mod 门户订阅，或
-* 把 `K2PollutionFilter` 目录（或发布的 `.zip`）放进 Factorio 的 `mods/` 目录并在 mod 列表启用。
+* 把 `K2PollutionPurification` 目录（或发布的 `.zip`）放进 Factorio 的 `mods/` 目录并在 mod 列表启用。
 
 可选依赖：`space-age`、`quality`、`quality-se`。需要 Factorio 2.1。
 

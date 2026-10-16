@@ -1,4 +1,4 @@
-local ICONS = "__K2PollutionFilter__/graphics/icons"
+local ICONS = "__K2PollutionPurification__/graphics/icons"
 
 data:extend({
   {

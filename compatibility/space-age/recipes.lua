@@ -10,7 +10,7 @@ if not guard.spore then
   return
 end
 
-local ICONS = "__K2PollutionFilter__/graphics/icons"
+local ICONS = "__K2PollutionPurification__/graphics/icons"
 local SPOILAGE_ICON = "__space-age__/graphics/icons/spoilage.png"
 
 --- 以污染版的图标为底，叠一枚孢子（spoilage）标记。

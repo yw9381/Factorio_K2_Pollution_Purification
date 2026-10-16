@@ -2,13 +2,13 @@ local hit_effects = require("__base__.prototypes.entity.hit-effects")
 local sounds = require("__base__.prototypes.entity.sounds")
 local guard = require("prototypes.guard")
 
-local ENTITY_GRAPHICS = "__K2PollutionFilter__/graphics/entity/air-purifier"
+local ENTITY_GRAPHICS = "__K2PollutionPurification__/graphics/entity/air-purifier"
 
 data:extend({
   {
     type = "furnace",
     name = "kr-air-purifier",
-    icon = "__K2PollutionFilter__/graphics/icons/entities/air-purifier.png",
+    icon = "__K2PollutionPurification__/graphics/icons/entities/air-purifier.png",
     icon_size = 64,
     flags = { "placeable-neutral", "placeable-player", "player-creation" },
     minable = { mining_time = 0.5, result = "kr-air-purifier" },
@@ -33,7 +33,7 @@ data:extend({
     open_sound = sounds.machine_open,
     close_sound = sounds.machine_close,
     working_sound = {
-      sound = { filename = "__K2PollutionFilter__/sounds/air-purifier.ogg" },
+      sound = { filename = "__K2PollutionPurification__/sounds/air-purifier.ogg" },
       idle_sound = { filename = "__base__/sound/idle1.ogg" },
     },
     graphics_set = {

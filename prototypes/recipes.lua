@@ -1,6 +1,6 @@
 local guard = require("prototypes.guard")
 
-local ICONS = "__K2PollutionFilter__/graphics/icons"
+local ICONS = "__K2PollutionPurification__/graphics/icons"
 
 --- 净化一个过滤器后得到"用过的过滤器"的结果表。
 --- 回收率 100% 时必须写成必定产出；写 independent_probability = 1 在引擎里没有意义。

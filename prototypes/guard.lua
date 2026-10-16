@@ -7,7 +7,7 @@ local M = {}
 M.yield = mods["Krastorio2"] ~= nil
 
 if M.yield then
-  log("[K2PollutionFilter] Krastorio2 detected, yielding: no prototype will be defined.")
+  log("[K2PollutionPurification] Krastorio2 detected, yielding: no prototype will be defined.")
   return M
 end
 

@@ -1,4 +1,4 @@
-# K2PollutionFilter (K2 Pollution Purification)
+# K2PollutionPurification (K2 Pollution Purification)
 
 [简体中文](README.md)
 
@@ -13,7 +13,7 @@ and only writes one line to the log, so K2's own versions stay authoritative.
 ## Installation
 
 * Subscribe on the mod portal, or
-* Copy the `K2PollutionFilter` folder (or the released `.zip`) into your Factorio `mods/` folder
+* Copy the `K2PollutionPurification` folder (or the released `.zip`) into your Factorio `mods/` folder
   and enable it in the mod list.
 
 Optional dependencies: `space-age`, `quality`, `quality-se`. Requires Factorio 2.1.

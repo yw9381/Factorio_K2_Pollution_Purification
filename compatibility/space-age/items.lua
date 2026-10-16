@@ -4,7 +4,7 @@ if not guard.spore then
   return
 end
 
-local ICONS = "__K2PollutionFilter__/graphics/icons"
+local ICONS = "__K2PollutionPurification__/graphics/icons"
 
 -- 孢子过滤器的图标是带 mipmap 的 64×64 图（64+32+16+8 = 120 宽），icon_size 仍为 64。
 data:extend({
