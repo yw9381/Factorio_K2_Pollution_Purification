@@ -1,6 +1,6 @@
 {
   "name": "K2PollutionPurification",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "title": "K2 Pollution Purification (K2污染净化)",
   "author": "L1n3",
   "description": "从 Krastorio 2 中单独抽取出来的污染处理体系：空气净化器、污染过滤器与过滤器回收。支持 Space Age 的Gleba(句芒星)的孢子处理",
