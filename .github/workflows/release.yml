@@ -14,6 +14,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # semantic-release 需要完整历史与 tag 才能判断「上一个版本」；
+          # actions/checkout 默认 fetch-depth: 1、fetch-tags: false，会让它看不到 tag 而算出错误版本
+          fetch-depth: 0
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
