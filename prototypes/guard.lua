@@ -28,9 +28,20 @@ function M.emissions()
   return emissions
 end
 
---- 品质减污倍率：normal 0 / uncommon 1 / rare 2 / epic 3 / legendary 5。
+--- 品质减污倍率（按等级查表）：
+--- normal 0 → 1× / uncommon 1 → 3× / rare 2 → 5× / epic 3 → 7× / legendary 5 → 10×。
+--- 传奇刻意高于等差数列的 9×，是设计档位而非笔误。
+--- 本体没有 level 4；其它 mod 注入的品质（4 / 6 / 7…）按前三档的等差数列外推 1 + 2 × level。
+local QUALITY_MODIFIERS = {
+  [0] = 1,
+  [1] = 3,
+  [2] = 5,
+  [3] = 7,
+  [5] = 10,
+}
+
 function M.quality_modifier(level)
-  return 1 + 0.3 * level
+  return QUALITY_MODIFIERS[level] or (1 + 2 * level)
 end
 
 return M

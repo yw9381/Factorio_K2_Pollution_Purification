@@ -23,6 +23,7 @@ for name, quality in pairs(data.raw["quality"]) do
     -- 引擎默认会按品质给制作机器提速（crafting_speed_quality_multiplier 回落到
     -- QualityPrototype.crafting_machine_speed_multiplier = 1 + 0.3 × level）。
     -- 这里把速度钉死在 1，让"减污"成为唯一的品质收益；否则实际吸污量会变成 (1+0.3L)²。
+    -- 减污倍率本身由 guard.quality_modifier 给出（1/3/5/7/10）。
     copy.crafting_speed_quality_multiplier = { [name] = 1 }
     copy.placeable_by = { item = BASE_NAME, count = 1, quality = name }
 
