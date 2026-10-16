@@ -16,6 +16,7 @@
       "tests/**",
       "tools/**",
       ".superpowers/**",
+      ".github/**",
       ".gitignore",
       "*.zip"
     ]
