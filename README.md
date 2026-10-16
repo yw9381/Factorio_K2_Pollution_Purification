@@ -14,7 +14,8 @@
 * 在 mod 门户订阅，或
 * 把 `K2PollutionPurification` 目录（或发布的 `.zip`）放进 Factorio 的 `mods/` 目录并在 mod 列表启用。
 
-可选依赖：`space-age`、`quality`、`quality-se`。需要 Factorio 2.1。
+本体依赖 `base > 2.1.0`（即 2.1 版本系列），可选依赖 `space-age`、`quality`。环境里若另有提供品质的
+`quality-se`，它的品质同样会被识别并适配（它未列入依赖，所以品质适配固定在 `data-updates` 阶段执行）。
 
 ## 配方
 

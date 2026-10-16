@@ -16,7 +16,10 @@ and only writes one line to the log, so K2's own versions stay authoritative.
 * Copy the `K2PollutionPurification` folder (or the released `.zip`) into your Factorio `mods/` folder
   and enable it in the mod list.
 
-Optional dependencies: `space-age`, `quality`, `quality-se`. Requires Factorio 2.1.
+The base requirement is `base > 2.1.0` (the 2.1 series) and the optional dependencies are
+`space-age` and `quality`. Quality provided by `quality-se` is still detected and patched when
+present; it is not declared as a dependency, which is why all quality patching runs in the
+`data-updates` stage.
 
 ## Recipes
 
