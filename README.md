@@ -1,4 +1,4 @@
-# K2PollutionFilter（K2 污染处理）
+# K2PollutionFilter（K2污染净化）
 
 [English](README_EN.md)
 
@@ -84,3 +84,7 @@
 * 本 mod 的其余代码与数据：LGPL-3.0（见 `LICENSE`）。
 
 孢子链路、设置项与子分组名的译文目前只有英文与简体中文；其余 21 种语言的补充非常欢迎。
+
+mod 名本身已用官方 `[mod-name]` 本地化到全部 23 种随包语言（见 `locale/*/k2pf-meta.cfg`）：
+中文界面显示「K2污染净化」，英文界面显示「K2 Pollution Purification」；`info.json` 的 `title` 是
+缺少对应语言时的保底值。
