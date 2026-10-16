@@ -25,10 +25,10 @@ Optional dependencies: `space-age`, `quality`, `quality-se`. Requires Factorio 2
 | Recipe | Category | Time | Ingredients | Result |
 | --- | --- | --- | --- | --- |
 | Air purifier | assembling machine | 5 s | 4 steel plate + 4 advanced circuit + 20 plastic bar + 1 engine unit | 1 air purifier |
-| Pollution filter | assembling machine | 2 s | 4 iron plate + 2 **carbon** (2 coal without Space Age) + 2 plastic bar | 1 pollution filter |
+| Pollution filter | assembling machine 2 (advanced crafting) | 2 s | 4 iron plate + 2 **carbon** (2 coal without Space Age) + 2 plastic bar | 1 pollution filter |
 | Air cleaning | air purifier | 600 s | 1 pollution filter | 1 used pollution filter (see recovery rate) |
 | Restore used pollution filter | chemical plant | 10 s | 1 used pollution filter + 50 water | 1 pollution filter |
-| Spore filter *(Space Age)* | assembling machine | 2 s | 4 iron plate + 2 carbon + 2 plastic bar | 1 spore filter |
+| Spore filter *(Space Age)* | assembling machine 2 (advanced crafting) | 2 s | 4 iron plate + 2 carbon + 2 plastic bar | 1 spore filter |
 | Spore cleaning *(Space Age)* | air purifier | 600 s | 1 spore filter | 1 used spore filter (see recovery rate) |
 | Restore used spore filter *(Space Age)* | chemical plant | 10 s | 1 used spore filter + 50 water | 1 spore filter |
 
@@ -117,10 +117,10 @@ and Simplified Chinese only — contributions for the other 21 languages are ver
 | 配方 | 类别 | 时间 | 原料 | 产物 |
 | --- | --- | --- | --- | --- |
 | 空气净化器 | 组装机 | 5 秒 | 4 钢板 + 4 高级电路 + 20 塑料 + 1 引擎 | 1 空气净化器 |
-| 污染过滤器 | 组装机 | 2 秒 | 4 铁板 + 2 **碳**（无 Space Age 时为 2 煤）+ 2 塑料 | 1 污染过滤器 |
+| 污染过滤器 | 组装机 2（advanced crafting） | 2 秒 | 4 铁板 + 2 **碳**（无 Space Age 时为 2 煤）+ 2 塑料 | 1 污染过滤器 |
 | 空气净化 | 空气净化器 | 600 秒 | 1 污染过滤器 | 1 用过的污染过滤器（见回收率） |
 | 回收用过的污染过滤器 | 化工厂 | 10 秒 | 1 用过的污染过滤器 + 50 水 | 1 污染过滤器 |
-| 孢子过滤器 *（Space Age）* | 组装机 | 2 秒 | 4 铁板 + 2 碳 + 2 塑料 | 1 孢子过滤器 |
+| 孢子过滤器 *（Space Age）* | 组装机 2（advanced crafting） | 2 秒 | 4 铁板 + 2 碳 + 2 塑料 | 1 孢子过滤器 |
 | 孢子净化 *（Space Age）* | 空气净化器 | 600 秒 | 1 孢子过滤器 | 1 用过的孢子过滤器（见回收率） |
 | 回收用过的孢子过滤器 *（Space Age）* | 化工厂 | 10 秒 | 1 用过的孢子过滤器 + 50 水 | 1 孢子过滤器 |
 

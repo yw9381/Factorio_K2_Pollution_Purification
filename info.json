@@ -14,7 +14,10 @@
   "package": {
     "ignore": [
       "tests/**",
-      "tools/**"
+      "tools/**",
+      ".superpowers/**",
+      ".gitignore",
+      "*.zip"
     ]
   }
 }
