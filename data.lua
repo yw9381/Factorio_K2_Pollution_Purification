@@ -1,0 +1,2 @@
+-- 基础原型在此处按顺序 require：类别 → 子分组 → 物品 → 实体 → 配方 → 科技。
+-- 参见 docs/superpowers/plans/2026-10-17-K2PollutionFilter.md 的 Task 4。
