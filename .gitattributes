@@ -1,0 +1,7 @@
+# git archive 打包（semantic-release-factorio 就是用 git archive 的）时应排除的内容。
+# 注意：info.json 的 package.ignore 只被 mod 门户/其他工具读取，git archive 不认它，
+# 所以仓库内不需要进分发包的东西要写在这里。
+.github/ export-ignore
+.gitignore export-ignore
+.gitattributes export-ignore
+.superpowers/ export-ignore
