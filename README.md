@@ -7,7 +7,7 @@
 Standalone extraction of Krastorio 2's pollution processing: the air purifier, the pollution
 filter loop (filter → air cleaning → used filter → wash it back) and the air purification
 technology — with no dependency on Krastorio 2 itself. Works with Space Age (spore chain) and
-Quality (quality-scaled pollution absorption).
+Quality (constant absorption, pinned crafting speed).
 
 When Krastorio 2 is installed, this mod steps aside completely: it defines no prototypes at all
 and only writes one line to the log, so K2's own versions stay authoritative.
@@ -32,46 +32,47 @@ Optional dependencies: `space-age`, `quality`, `quality-se`. Requires Factorio 2
 | Spore cleaning *(Space Age)* | air purifier | 600 s | 1 spore filter | 1 used spore filter (see recovery rate) |
 | Restore used spore filter *(Space Age)* | chemical plant | 10 s | 1 used spore filter + 50 water | 1 spore filter |
 
-The air purifier absorbs 50 pollution per minute (see the strength setting), has a crafting
-speed of 1, 200 health and uses 75 kW. With Space Age it also absorbs 50 spores per minute.
+The air purifier absorbs 200 pollution per minute (see the strength setting), has a crafting
+speed of 1, 200 health and uses 75 kW. With Space Age it also absorbs 200 spores per minute.
 Cleaning and recycling recipes are never produced by recyclers (`auto_recycle = false`) and do
-not take part in quality.
+not take part in quality. The purifier's absorption does not change with quality either (see
+below).
 
 ### Startup settings
 
 | Setting | Values | Default | Effect |
 | --- | --- | --- | --- |
-| `k2pf-pollution-strength` | 0.5 / 1 / 2 / 4 | 1 | Multiplies the absorption rate: −25 / −50 / −100 / −200 per minute |
+| `k2pf-pollution-strength` | 0.5 / 1 / 2 / 4 | 1 | Multiplies the absorption rate: −100 / −200 / −400 / −800 per minute |
 | `k2pf-filter-recovery` | 90% / 100% | 90% | Chance that cleaning leaves a reusable used filter instead of destroying it |
 | `k2pf-spore-content` | on / off | on | Adds the spore chain (needs Space Age) |
 
 ### Compatibility
 
 **Space Age.** The second ingredient of both filter recipes becomes carbon, the purifier gains a
-50/min spore absorption, heating energy (100 kW) and `reset_animation_when_frozen`, and
+200/min spore absorption, heating energy (100 kW) and `reset_animation_when_frozen`, and
 `kr-air-purifier`, `kr-air-cleaning` and `kr-spore-cleaning` are restricted to surfaces with
 atmosphere (`pressure >= 1`) — space platforms cannot craft them.
 
-**Quality.** The engine does not scale negative emissions by quality, so every quality level
-above normal gets its own hidden copy of the purifier entity:
+**Quality.** The purifier removes a flat **−200/min** at every quality. The engine never scales
+emissions by quality (FFF-375: a furnace's quality bonuses are only "faster" and more health), so
+there is no engine hook to build on — and this mod deliberately does not add one:
 
-| Quality | Level | Multiplier | Pollution / spore absorption per minute | Absorbed per filter (600 s) | Health |
+| Quality | Level | Absorption per minute | Per filter (600 s) | Health | Crafting speed |
 | --- | --- | --- | --- | --- | --- |
-| Normal | 0 | 1× | −50 | 500 | 200 |
-| Uncommon | 1 | 3× | −150 | 1,500 | 260 |
-| Rare | 2 | 5× | −250 | 2,500 | 320 |
-| Epic | 3 | 7× | −350 | 3,500 | 380 |
-| Legendary | 5 | 10× | −500 | 5,000 | 500 |
+| Normal | 0 | −200 | 2,000 | 200 | 1 |
+| Uncommon | 1 | −200 | 2,000 | 260 | 1 |
+| Rare | 2 | −200 | 2,000 | 320 | 1 |
+| Epic | 3 | −200 | 2,000 | 380 | 1 |
+| Legendary | 5 | −200 | 2,000 | 500 | 1 |
 
-The multiplier is this mod's own curve — legendary is deliberately one step above the 9× an
-arithmetic progression would give. The global `k2pf-pollution-strength` setting still multiplies
-on top of it. Crafting speed is deliberately pinned to 1 by `crafting_speed_quality_multiplier`,
-so a filter always lasts one full 600 s cycle: the engine would otherwise also speed the machine
-up (the only quality bonus a furnace gets besides health) and burn filters faster at the same
-absorption rate. Health follows the engine default (`+30%` per level, so 200 / 260 / 320 / 380 /
-500), while energy usage and module slots do not change — quality adds no pollution bonus of its
-own on top of this mod's copies. Qualities added by other mods are picked up automatically and
-extrapolated as `1 + 2 × level`; `quality-unknown` is skipped.
+Health follows the engine default (`+30%` per level), so a legendary purifier is tougher — that is
+the only quality bonus it keeps. Crafting speed is pinned to 1 for every quality via
+`crafting_speed_quality_multiplier`, because absorption is tied to energy usage rather than
+crafting speed: letting the engine speed the machine up would not raise the absorption rate at
+all, it would only shorten the 600 s recipe and burn filters 2.5× faster at legendary. Energy
+usage (75 kW) and module slots (none) are unchanged as well. The global
+`k2pf-pollution-strength` setting still multiplies the value (0.5×/2×/4× → −100/−400/−800 per
+minute). Qualities added by other mods are pinned the same way; `quality-unknown` is skipped.
 
 ### Known trade-offs
 
@@ -104,7 +105,7 @@ and Simplified Chinese only — contributions for the other 21 languages are ver
 
 把 Krastorio 2 的污染处理体系单独抽出来：空气净化器、污染过滤器循环（过滤器 → 净化 →
 用过的过滤器 → 洗回干净过滤器）以及空气净化科技，完全不依赖 K2 本体。支持 Space Age
-（孢子链路）与 Quality（品质减污）。
+（孢子链路）与 Quality（减污恒定、速度钉死）。
 
 **装 Krastorio 2 本体时本 mod 完全让位**：不定义任何原型，只往日志里写一行提示，让 K2
 的版本保持权威。
@@ -128,40 +129,39 @@ and Simplified Chinese only — contributions for the other 21 languages are ver
 | 孢子净化 *（Space Age）* | 空气净化器 | 600 秒 | 1 孢子过滤器 | 1 用过的孢子过滤器（见回收率） |
 | 回收用过的孢子过滤器 *（Space Age）* | 化工厂 | 10 秒 | 1 用过的孢子过滤器 + 50 水 | 1 孢子过滤器 |
 
-空气净化器每分钟吸收 50 污染（受强度设置影响），制作速度 1，血量 200，耗电 75 kW；
-装了 Space Age 后额外每分钟吸收 50 孢子。净化与回收配方不会被回收机处理
-（`auto_recycle = false`），也不参与品质。
+空气净化器每分钟吸收 200 污染（受强度设置影响），制作速度 1，血量 200，耗电 75 kW；
+装了 Space Age 后额外每分钟吸收 200 孢子。净化与回收配方不会被回收机处理
+（`auto_recycle = false`），也不参与品质；净化器自身的减污量同样不随品质变化（见下文）。
 
 ### 启动设置
 
 | 设置 | 取值 | 默认 | 作用 |
 | --- | --- | --- | --- |
-| `k2pf-pollution-strength` | 0.5 / 1 / 2 / 4 | 1 | 吸污速率倍率：−25 / −50 / −100 / −200 每分钟 |
+| `k2pf-pollution-strength` | 0.5 / 1 / 2 / 4 | 1 | 吸污速率倍率：−100 / −200 / −400 / −800 每分钟 |
 | `k2pf-filter-recovery` | 90% / 100% | 90% | 净化后得到可复用过滤器的几率，其余情况视为过滤器被摧毁 |
 | `k2pf-spore-content` | 开 / 关 | 开 | 是否追加孢子链路（需要 Space Age） |
 
 ### 兼容性
 
-**Space Age。** 两张过滤器配方的第二项原料改为碳；净化器额外吸收 50/分钟孢子，并获得加热
+**Space Age。** 两张过滤器配方的第二项原料改为碳；净化器额外吸收 200/分钟孢子，并获得加热
 能耗（100 kW）与 `reset_animation_when_frozen`；`kr-air-purifier`、`kr-air-cleaning` 与
 `kr-spore-cleaning` 限定在有大气压的星球（`pressure >= 1`），太空平台无法制作。
 
-**Quality。** 引擎不会按品质缩放负排放，因此 normal 之上的每个品质都有一份隐藏的净化器实体：
+**Quality。** 净化器在**所有品质下都固定减污 −200/分钟**。引擎本来就不会按品质缩放排放（FFF-375：熔炉类建筑的品质收益只有「更快」与「更多血量」），所以既没有可用的引擎钩子，本 mod 也不再自己造一个：
 
-| 品质 | 等级 | 倍率 | 每分钟减污 / 吸孢子 | 单过滤器吸污（600 s） | 血量 |
+| 品质 | 等级 | 每分钟减污 / 吸孢子 | 单过滤器吸污（600 s） | 血量 | 制作速度 |
 | --- | --- | --- | --- | --- | --- |
-| 普通 | 0 | 1× | −50 | 500 | 200 |
-| 罕见 | 1 | 3× | −150 | 1 500 | 260 |
-| 稀有 | 2 | 5× | −250 | 2 500 | 320 |
-| 史诗 | 3 | 7× | −350 | 3 500 | 380 |
-| 传奇 | 5 | 10× | −500 | 5 000 | 500 |
+| 普通 | 0 | −200 | 2 000 | 200 | 1 |
+| 罕见 | 1 | −200 | 2 000 | 260 | 1 |
+| 稀有 | 2 | −200 | 2 000 | 320 | 1 |
+| 史诗 | 3 | −200 | 2 000 | 380 | 1 |
+| 传奇 | 5 | −200 | 2 000 | 500 | 1 |
 
-倍率是本 mod 自定的曲线，传奇刻意比等差数列的 9× 高一档。全局设置
-`k2pf-pollution-strength` 仍乘在品质倍率之上。制作速度用 `crafting_speed_quality_multiplier`
-刻意钉在 1，让一个过滤器始终跑满 600 s 一个周期：引擎否则会连带提速（除血量以外，这是熔炉类
-建筑唯一的品质收益），在减污速率不变的情况下加快过滤器消耗。血量沿用引擎默认（每级 +30%，
-即 200 / 260 / 320 / 380 / 500），能耗与插件槽不变；除本 mod 自己复制的这些实体外，品质本身
-不提供任何减污加成。其它 mod 注入的品质会自动覆盖，并按 `1 + 2 × 等级` 外推；`quality-unknown`
+血量沿用引擎默认（每级 +30%），也就是传奇净化器更耐打——这是它保留的唯一品质收益。制作速度用
+`crafting_speed_quality_multiplier` 对每个品质钉死在 1：减污速率只跟能耗挂钩、与制作速度无关，
+放开引擎的提速不会让每分钟减污变多，只会把 600 s 配方缩短，传奇白白多烧 2.5 倍过滤器。能耗
+（75 kW）与插件槽（无）同样不随品质变化。全局设置 `k2pf-pollution-strength` 仍乘算
+（0.5×/2×/4× → 每分钟 −100/−400/−800）。其它 mod 注入的品质同样会被钉速度；`quality-unknown`
 跳过。
 
 ### 已知取舍
