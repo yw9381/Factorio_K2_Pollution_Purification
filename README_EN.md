@@ -40,8 +40,8 @@ rate and technology all come from K2. Only the cleaning time (600 s) and absorpt
 (−200/min × strength) are aligned with this mod.
 
 The air purifier absorbs 200 pollution per minute (see the strength setting), has a crafting
-speed of 1, 200 health and uses 75 kW. With Space Age it also absorbs 200 spores per minute (not
-added when K2 is installed). Cleaning and recycling recipes are never produced by recyclers (`auto_recycle = false`) and do
+speed of 1, 200 health and uses 75 kW. With Space Age it also absorbs 200 spores per minute (this
+also applies with K2 installed). Cleaning and recycling recipes are never produced by recyclers (`auto_recycle = false`) and do
 not take part in quality. The purifier's absorption does not change with quality either (see
 below).
 
@@ -51,7 +51,7 @@ below).
 | --- | --- | --- | --- |
 | `k2pf-pollution-strength` | 0.5 / 1 / 2 / 4 | 1 | Multiplies the absorption rate: −100 / −200 / −400 / −800 per minute |
 | `k2pf-filter-recovery` | 90% / 100% | 90% | Chance that cleaning leaves a reusable used filter instead of destroying it |
-| `k2pf-spore-content` | on / off | on | Adds the spore chain (needs Space Age) |
+| `k2pf-spore-content` | on / off | on | Adds spore absorption / the spore chain (needs Space Age) |
 
 ## Compatibility
 
@@ -59,8 +59,9 @@ below).
 only patches K2's `kr-air-purifier` absorption to −200/min × the strength setting and
 `kr-air-cleaning` to 600 seconds. K2's items, build and filter recipes, 90% recovery rate and
 technologies are kept as-is; the Space Age spore chain and atmosphere restriction below are not
-enabled with K2. This also applies with Krastorio 2 Spaced Out (K2SO), and K2SO's spore
-absorption value for the purifier is preserved.
+enabled with K2, but the purifier's spore absorption is aligned to −200/min × strength as well.
+This also applies with Krastorio 2 Spaced Out (K2SO), overriding its original −50 pollution /
+−5 spores values.
 
 **Space Age (without K2).** The second ingredient of both filter recipes becomes carbon, the purifier gains a
 200/min spore absorption, heating energy (100 kW) and `reset_animation_when_frozen`, and
@@ -103,9 +104,9 @@ minute). Qualities added by other mods are pinned the same way; `quality-unknown
 * **Entity description.** The air purifier description is K2's original text, which mentions a
   10% chance of filters being destroyed. That matches the default 90% recovery rate; with the
   recovery rate set to 100% the wording is slightly off.
-* **Settings under K2.** With K2 installed, `k2pf-filter-recovery` and `k2pf-spore-content` have
-  no effect: the recovery rate stays at K2's 90% and no spore chain is added. The
-  `k2pf-pollution-strength` setting still applies.
+* **Settings under K2.** With K2 installed, `k2pf-filter-recovery` has no effect: the recovery
+  rate stays at K2's 90%. `k2pf-spore-content` controls whether spore absorption is added, and
+  `k2pf-pollution-strength` multiplies both pollution and spore absorption.
 
 ## Credits
 
