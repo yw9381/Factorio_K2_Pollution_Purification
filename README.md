@@ -48,10 +48,11 @@ mod：净化配方固定 600 秒、吸污量固定 −200/分钟（受强度设�
 
 ## 兼容性
 
-**Krastorio 2。** 装了 K2 时本 mod 不定义任何原型，只在 `data-updates` 阶段把 K2 的
+**Krastorio 2。** 装了 K2 时本 mod 不定义任何原型，只在 `data-final-fixes` 阶段把 K2 的
 `kr-air-purifier` 吸污量改为 −200/分钟 × 强度设置、`kr-air-cleaning` 时长改为 600 秒。K2 的
 物品、建造与过滤器配方、90% 回收率、科技原样保留；下面的 Space Age 孢子链路与大气压限制在
-装 K2 时不启用。
+装 K2 时不启用。装 Krastorio 2 Spaced Out（K2SO）时同样生效，并保留它给净化器写入的孢子
+吸污值。
 
 **Space Age（未装 K2 时）。** 两张过滤器配方的第二项原料改为碳；净化器额外吸收 200/分钟孢子，并获得加热
 能耗（100 kW）与 `reset_animation_when_frozen`；`kr-air-purifier`、`kr-air-cleaning` 与

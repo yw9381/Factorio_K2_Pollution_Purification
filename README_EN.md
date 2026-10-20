@@ -55,11 +55,12 @@ below).
 
 ## Compatibility
 
-**Krastorio 2.** With K2 installed this mod defines no prototypes of its own. In `data-updates` it
+**Krastorio 2.** With K2 installed this mod defines no prototypes of its own. In `data-final-fixes` it
 only patches K2's `kr-air-purifier` absorption to −200/min × the strength setting and
 `kr-air-cleaning` to 600 seconds. K2's items, build and filter recipes, 90% recovery rate and
 technologies are kept as-is; the Space Age spore chain and atmosphere restriction below are not
-enabled with K2.
+enabled with K2. This also applies with Krastorio 2 Spaced Out (K2SO), and K2SO's spore
+absorption value for the purifier is preserved.
 
 **Space Age (without K2).** The second ingredient of both filter recipes becomes carbon, the purifier gains a
 200/min spore absorption, heating energy (100 kW) and `reset_animation_when_frozen`, and

@@ -1,7 +1,7 @@
 -- 让位判断、启动设置读取与共用常量。
 --
 -- 让位：装了 Krastorio2 本体时，本 mod 在 data 阶段不定义任何原型（K2 自己已经有
--- 这套污染处理体系），改由 compatibility/krastorio2.lua 在 data-updates 阶段把 K2
+-- 这套污染处理体系），改由 compatibility/krastorio2.lua 在 data-final-fixes 阶段把 K2
 -- 的净化数值对齐本 mod。设置与常量仍要照常计算，供补丁使用。
 local M = {}
 
