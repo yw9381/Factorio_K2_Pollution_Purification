@@ -7,8 +7,10 @@ filter loop (filter → air cleaning → used filter → wash it back) and the a
 technology — with no dependency on Krastorio 2 itself. Works with Space Age (spore chain) and
 Quality (constant absorption, pinned crafting speed).
 
-When Krastorio 2 is installed, this mod steps aside completely: it defines no prototypes at all
-and only writes one line to the log, so K2's own versions stay authoritative.
+When Krastorio 2 is installed, this mod no longer defines its own prototypes (to avoid name
+clashes). Instead it aligns K2's purifier with this mod's numbers: the cleaning recipe is pinned
+to 600 seconds and the purifier absorbs −200 pollution/min (scaled by the strength setting). K2's
+items, recipe ingredients, recovery rate and technologies stay untouched.
 
 ## Installation
 
@@ -17,9 +19,9 @@ and only writes one line to the log, so K2's own versions stay authoritative.
   and enable it in the mod list.
 
 The base requirement is `base > 2.1.0` (the 2.1 series) and the optional dependencies are
-`space-age` and `quality`. Quality provided by `quality-se` is still detected and patched when
-present; it is not declared as a dependency, which is why all quality patching runs in the
-`data-updates` stage.
+`space-age`, `quality` and `Krastorio2`. Quality provided by `quality-se` is still detected and
+patched when present; it is not declared as a dependency, which is why all quality patching runs
+in the `data-updates` stage.
 
 ## Recipes
 
@@ -33,9 +35,13 @@ present; it is not declared as a dependency, which is why all quality patching r
 | Spore cleaning *(Space Age)* | air purifier | 600 s | 1 spore filter | 1 used spore filter (see recovery rate) |
 | Restore used spore filter *(Space Age)* | chemical plant | 10 s | 1 used spore filter + 50 water | 1 spore filter |
 
+With K2 installed the ingredients above do not apply: the build recipe, filter recipes, recovery
+rate and technology all come from K2. Only the cleaning time (600 s) and absorption
+(−200/min × strength) are aligned with this mod.
+
 The air purifier absorbs 200 pollution per minute (see the strength setting), has a crafting
-speed of 1, 200 health and uses 75 kW. With Space Age it also absorbs 200 spores per minute.
-Cleaning and recycling recipes are never produced by recyclers (`auto_recycle = false`) and do
+speed of 1, 200 health and uses 75 kW. With Space Age it also absorbs 200 spores per minute (not
+added when K2 is installed). Cleaning and recycling recipes are never produced by recyclers (`auto_recycle = false`) and do
 not take part in quality. The purifier's absorption does not change with quality either (see
 below).
 
@@ -49,14 +55,21 @@ below).
 
 ## Compatibility
 
-**Space Age.** The second ingredient of both filter recipes becomes carbon, the purifier gains a
+**Krastorio 2.** With K2 installed this mod defines no prototypes of its own. In `data-updates` it
+only patches K2's `kr-air-purifier` absorption to −200/min × the strength setting and
+`kr-air-cleaning` to 600 seconds. K2's items, build and filter recipes, 90% recovery rate and
+technologies are kept as-is; the Space Age spore chain and atmosphere restriction below are not
+enabled with K2.
+
+**Space Age (without K2).** The second ingredient of both filter recipes becomes carbon, the purifier gains a
 200/min spore absorption, heating energy (100 kW) and `reset_animation_when_frozen`, and
 `kr-air-purifier`, `kr-air-cleaning` and `kr-spore-cleaning` are restricted to surfaces with
 atmosphere (`pressure >= 1`) — space platforms cannot craft them.
 
-**Quality.** The purifier removes a flat **−200/min** at every quality. The engine never scales
-emissions by quality (FFF-375: a furnace's quality bonuses are only "faster" and more health), so
-there is no engine hook to build on — and this mod deliberately does not add one:
+**Quality.** The purifier removes a flat **−200/min** at every quality (this also applies with K2
+installed; the values are patched onto K2's entity). The engine never scales emissions by quality
+(FFF-375: a furnace's quality bonuses are only "faster" and more health), so there is no engine
+hook to build on — and this mod deliberately does not add one:
 
 | Quality | Level | Absorption per minute | Per filter (600 s) | Health | Crafting speed |
 | --- | --- | --- | --- | --- | --- |
@@ -89,6 +102,9 @@ minute). Qualities added by other mods are pinned the same way; `quality-unknown
 * **Entity description.** The air purifier description is K2's original text, which mentions a
   10% chance of filters being destroyed. That matches the default 90% recovery rate; with the
   recovery rate set to 100% the wording is slightly off.
+* **Settings under K2.** With K2 installed, `k2pf-filter-recovery` and `k2pf-spore-content` have
+  no effect: the recovery rate stays at K2's 90% and no spore chain is added. The
+  `k2pf-pollution-strength` setting still applies.
 
 ## Credits
 

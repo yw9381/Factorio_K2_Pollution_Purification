@@ -1,7 +1,11 @@
--- Krastorio2 本体在场时整体让位。
 local guard = require("prototypes.guard")
 
+-- 装了 K2：不定义自己的原型，只把 K2 的净化数值对齐本 mod。
 if guard.yield then
+  require("compatibility.krastorio2")
+  if mods["quality"] or mods["quality-se"] then
+    require("compatibility.quality.entity")
+  end
   return
 end
 

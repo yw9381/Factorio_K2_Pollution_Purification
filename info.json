@@ -8,7 +8,8 @@
   "dependencies": [
     "base > 2.1.0",
     "? space-age",
-    "? quality"
+    "? quality",
+    "? Krastorio2"
   ],
   "package": {
     "ignore": [
