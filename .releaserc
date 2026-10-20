@@ -7,6 +7,10 @@
             "@semantic-release/commit-analyzer",
             {
                 "preset": "conventionalcommits",
+                "parserOpts": {
+                    "headerPattern": "^[\\W_]*?(\\w+)(?:\\((.*)\\))?!?: (.*)$",
+                    "headerCorrespondence": ["type", "scope", "subject"]
+                },
                 "releaseRules": [
                     { "type": "info", "release": "patch" },
                     { "type": "feat", "release": "minor" },
@@ -31,6 +35,10 @@
             "@semantic-release/release-notes-generator",
             {
                 "preset": "conventionalcommits",
+                "parserOpts": {
+                    "headerPattern": "^[\\W_]*?(\\w+)(?:\\((.*)\\))?!?: (.*)$",
+                    "headerCorrespondence": ["type", "scope", "subject"]
+                },
                 "writerOpts": {
                     "headerPartial": "---------------------------------------------------------------------------------------------------\nVersion: {{version}}\nDate: {{#if date}}{{date}}{{else}}????{{/if}}\n",
                     "footerPartial": "",
